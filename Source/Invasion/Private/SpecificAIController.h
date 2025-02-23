@@ -13,5 +13,12 @@ UCLASS()
 class ASpecificAIController : public AAIController
 {
 	GENERATED_BODY()
-	
+
+public:
+	ASpecificAIController(const FObjectInitializer & = FObjectInitializer::Get());
+protected:
+	UPROPERTY(EditAnywhere)
+	float CollisionQueryRange;
+	void BeginPlay() override;
+
 };

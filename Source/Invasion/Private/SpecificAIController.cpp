@@ -2,4 +2,19 @@
 
 
 #include "SpecificAIController.h"
+#include "Navigation/CrowdFollowingComponent.h"
+
+ASpecificAIController::ASpecificAIController(const FObjectInitializer& ObjectInitializer) : 
+	Super(ObjectInitializer.SetDefaultSubobjectClass<UCrowdFollowingComponent>(TEXT("PathFollowingComponent")))
+{
+
+}
+
+void ASpecificAIController::BeginPlay()
+{
+	Super::BeginPlay();
+
+	UCrowdFollowingComponent* CrowdFollowingComponent = FindComponentByClass<UCrowdFollowingComponent>();
+	CrowdFollowingComponent->SetCrowdCollisionQueryRange(CollisionQueryRange);
+}
 
